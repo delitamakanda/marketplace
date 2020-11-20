@@ -10,6 +10,10 @@
         <p>{% trans 'Please, use the following form to log-in:'%} </p>
     {% endif %}
 
+    <ul>
+        <li><a href={% url 'social:begin' 'google-oauth2' %}>{% trans "Log-in with Google" %}</a></li>
+    </ul>
+
     <div class="login-form">
         <form method="post" action="{% url 'login' %}">
             {{ form.as_p }}
