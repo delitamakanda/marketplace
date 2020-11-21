@@ -140,3 +140,4 @@ cython_debug/
 .vscode/
 cert.crt
 cert.key
+.DS_Store

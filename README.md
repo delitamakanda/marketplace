@@ -1,6 +1,6 @@
 # Marketplace
 
-## How to init project
+### How to init project
 
 ```bash
 python3 -m venv env
@@ -15,3 +15,7 @@ or
 
 python3 manage.py runserver
 ```
+
+### Resources
+* https://django-paypal.readthedocs.io/en/stable/
+* https://github.com/spookylukey/django-paypal
