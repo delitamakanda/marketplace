@@ -1,0 +1,60 @@
+{% extends "base_catalog.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% trans 'Your Cart' %} {% endblock %}
+{% block content %} 
+    <h1>{% trans 'Your Cart' %}</h1>
+    <table class="cart">
+        <thead>
+            <tr>
+                <th>{% trans 'Image' %}</th>
+                <th>{% trans 'Product' %}</th>
+                <th>{% trans 'Quantiy' %}</th>
+                <th>{% trans 'Remove' %}</th>
+                <th>{% trans 'Unit Price' %}</th>
+                <th>{% trans 'Price' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <tr>
+                        <td>
+                            <a href="{{ product.get_absolute_url }}">
+                                <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static "img/no-image-icon.png" %} {% endif %}" />
+                            </a>
+                        </td>
+                        <td>
+                            {{ product.name }}
+                        </td>
+                        <td>
+                            {{ item.quantity}}
+                        </td>
+                        <td>
+                            <form action="{% url "cart:cart_remove" product.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" value="{% trans "Remove" %}" />
+                            </form>
+                        </td>
+                        <td>
+                            {{ product.price }} €
+                        </td>
+                        <td>
+                            {{ item.total_price }} €
+                        </td>
+                    </tr>
+                {% endwith %}
+            {% endfor %}
+            <tr class="total">
+                <td>{% trans "Total" %}</td>
+                <td colspan="4"></td>
+                <td>{{ cart.get_total_price }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <a href="{% url "catalog:product_list" %}">{% trans "Continue shopping" %}</a>
+        <a href="#">{% trans "Checkout" %}</a>
+    </p>
+{% endblock %}

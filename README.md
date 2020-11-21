@@ -19,3 +19,4 @@ python3 manage.py runserver
 ### Resources
 * https://django-paypal.readthedocs.io/en/stable/
 * https://github.com/spookylukey/django-paypal
+* Django 3 by example by Antonio Melé
