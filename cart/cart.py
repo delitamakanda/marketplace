@@ -2,7 +2,6 @@ from decimal import Decimal
 from django.conf import settings
 from catalog.models import Product
 
-
 class Cart(object):
 
     def __init__(self, request):
@@ -55,15 +54,19 @@ class Cart(object):
 
         cart = self.cart.copy()
         for product in products:
-            print(product.image)
+            image = None
+            if product.image:
+                image = product.image.url
             obj_product = {
+                'image': image,
                 'name': product.name,
                 'id': product.id,
+                'get_absolute_url': product.get_absolute_url()
             }
             cart[str(product.id)]['product'] = obj_product
 
         for item in cart.values():
-            item['price'] = str(item['price'])
+            item['price'] = round(float(item['price']), 2)
             item['total_price'] = item['price'] * item['quantity']
             yield item
 
