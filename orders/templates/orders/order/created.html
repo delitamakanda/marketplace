@@ -1,0 +1,11 @@
+{% extends "base_catalog.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% trans 'Thank you' %} {% endblock %}
+{% block content %} 
+    <div class="order-info">
+        <h1>{% trans 'Thank you' %}</h1>
+        <p>{% trans "Your order has been successfully completed. Your order number is " %} #{{ order.id }}</p>
+    </div>
+{% endblock %}
