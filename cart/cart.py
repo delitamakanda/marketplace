@@ -29,7 +29,6 @@ class Cart(object):
             self.cart[product_id]['quantity'] = quantity
         else:
             self.cart[product_id]['quantity'] += quantity
-
         self.save()
 
     def save(self):
@@ -56,12 +55,20 @@ class Cart(object):
 
         cart = self.cart.copy()
         for product in products:
-            cart[str(product.id)]['product'] = product
+            print(product.image)
+            obj_product = {
+                'name': product.name,
+                'id': product.id,
+            }
+            cart[str(product.id)]['product'] = obj_product
 
         for item in cart.values():
-            item['price'] = Decimal(item['price'])
+            item['price'] = str(item['price'])
             item['total_price'] = item['price'] * item['quantity']
             yield item
+
+    def get_total_price(self):
+        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
     def __len__(self):
         """
