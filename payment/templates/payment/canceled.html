@@ -1,0 +1,12 @@
+{% extends "base_catalog.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} {% trans 'Payment canceled' %} {% endblock %}
+{% block content %} 
+    <div class="payment-canceled">
+        <h1>{% trans 'Payment canceled' %}</h1>
+        <p>{% trans "Your payment has not been processed." %}</p>
+        <p>{% trans "There was a problem processing your payment." %}</p>
+    </div>
+{% endblock %}
