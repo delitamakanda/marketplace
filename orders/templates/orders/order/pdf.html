@@ -1,0 +1,50 @@
+{% load i18n %}
+{% load static %}
+<html>
+    <body>
+        <h1></h1>
+        <p>
+            {% trans "Invoice no." %} #{{ order.id }}
+            <span> {{ order.created|date:"d M Y" }}</span>
+        </p>
+
+        <h3>{% trans "Bill to"%}</h3>
+        <p>
+            {{ order.first_name }} {{ order.last_name }}<br/>
+            {{ order.email }}<br/>
+            {{ order.address }}<br/>
+            {{ order.postal_code }} {{ order.city }}<br/>
+            {{ order.country.name }}
+        </p>
+
+        <h3>{% trans "Items bought"%}</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>{% trans "Product"%}</th>
+                    <th>{% trans "Price"%}</th>
+                    <th>{% trans "Quantity"%}</th>
+                    <th>{% trans "Cost"%}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.items.all %}
+                    <tr class="row{% cycle "1" "2"%}">
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.price }} €</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.get_cost }} €</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3">{% trans "Total"%}</td>
+                    <td>{{ order.get_total_cost }} €</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <span class="{% if order.paid %}paid{% else %}pending{% endif %}">
+            {% if order.paid %}{% trans "Paid"%}{% else %}{% trans "Pending payment"%}{% endif %}
+        </span>
+    </body>
+</html>
