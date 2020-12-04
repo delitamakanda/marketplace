@@ -31,4 +31,6 @@ deploy_production:
     - echo "export GOOGLE_APP_ENGINE_USER='$GOOGLE_APP_ENGINE_USER'" >> .gitlab-ci.env
     - echo "export PROJECT_ID=$PROJECT_ID_PRODUCTION" >> .gitlab-ci.env
     - echo "export SECRET_KEY='$DJANGO_SECRET_KEY_PRODUCTION'" >> .gitlab-ci.env
+    - echo "export SOCIAL_AUTH_GOOGLE_OAUTH2_KEY=$SOCIAL_AUTH_GOOGLE_OAUTH2_KEY" >> .gitlab-ci.env
+    - echo "export SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET='$SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET'" >> .gitlab-ci.env
     - echo $DEPLOY_KEY_FILE_PRODUCTION > .gitlab-ci.keyfile.json
