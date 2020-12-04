@@ -11,6 +11,7 @@ image: python:3.9
     - pip install -r requirements.txt
     - python manage.py migrate
     - python manage.py collectstatic --noinput --pythonpath lib
+    - echo $DEPLOY_KEY_FILE_PRODUCTION > .gitlab-ci.keyfile.json
     - gcloud auth activate-service-account --key-file .gitlab-ci.keyfile.json
     - gcloud --quiet --project $PROJECT_ID app deploy
 
@@ -22,15 +23,13 @@ deploy_production:
     - main
   script:
     - echo "export PROJECT_ID=$PROJECT_ID_PRODUCTION" >> .gitlab-ci.env
-    - echo "export SECRET_KEY='$DJANGO_SECRET_KEY_PRODUCTION'" >> .gitlab-ci.env
+    - echo "export SECRET_KEY='$SECRET_KEY'" >> .gitlab-ci.env
     - echo "export DEBUG=$DEBUG" >> .gitlab-ci.env
     - echo "export GOOGLE_APP_ENGINE_HOST='$GOOGLE_APP_ENGINE_HOST'" >> .gitlab-ci.env
     - echo "export GOOGLE_APP_ENGINE_NAME=$GOOGLE_APP_ENGINE_NAME" >> .gitlab-ci.env
     - echo "export GOOGLE_APP_ENGINE_PASSWORD='$GOOGLE_APP_ENGINE_PASSWORD'" >> .gitlab-ci.env
     - echo "export GOOGLE_APP_ENGINE_PORT=$GOOGLE_APP_ENGINE_PORT" >> .gitlab-ci.env
     - echo "export GOOGLE_APP_ENGINE_USER='$GOOGLE_APP_ENGINE_USER'" >> .gitlab-ci.env
-    - echo "export PROJECT_ID=$PROJECT_ID_PRODUCTION" >> .gitlab-ci.env
-    - echo "export SECRET_KEY='$DJANGO_SECRET_KEY_PRODUCTION'" >> .gitlab-ci.env
     - echo "export SOCIAL_AUTH_GOOGLE_OAUTH2_KEY=$SOCIAL_AUTH_GOOGLE_OAUTH2_KEY" >> .gitlab-ci.env
     - echo "export SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET='$SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET'" >> .gitlab-ci.env
     - echo $DEPLOY_KEY_FILE_PRODUCTION > .gitlab-ci.keyfile.json
