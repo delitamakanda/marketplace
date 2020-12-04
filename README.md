@@ -1,5 +1,5 @@
 # Marketplace
-
+![https://gitlab.com/dmakanda/marketplace](https://gitlab.com/dmakanda/marketplace/badges/main/pipeline.svg)
 ### How to init project
 
 ```bash
