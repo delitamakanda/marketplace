@@ -7,7 +7,6 @@ image: python:3.9
     - curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
     - apt-get update && apt-get install google-cloud-sdk
   after_script:
-    - source .gitlab-ci.env
     - sed --in-place -e marketplace/settings_production.py
     - sed --in-place -e "s/SECRET_KEY\s*=\s*'.*'/SECRET_KEY = '$SECRET_KEY'/g" marketplace/settings_production.py
     - pip install -r requirements.txt -t lib/
@@ -23,7 +22,6 @@ deploy_production:
   only:
     - main
   script:
-    - touch .gitlab-ci.env
     - echo "export PROJECT_ID=$PROJECT_ID_PRODUCTION" >> .gitlab-ci.env
     - echo "export SECRET_KEY='$DJANGO_SECRET_KEY_PRODUCTION'" >> .gitlab-ci.env
     - echo "export DEBUG=$DEBUG" >> .gitlab-ci.env
