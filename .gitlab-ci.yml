@@ -8,7 +8,7 @@ image: python:3.9
     - apt-get update && apt-get install google-cloud-sdk
   after_script:
     - sed --in-place -e "s/SECRET_KEY\s*=\s*'.*'/SECRET_KEY = '$SECRET_KEY'/g" marketplace/settings_production.py
-    - pip install -r requirements.txt -t lib/
+    - pip install -r requirements.txt
     - python manage.py migrate
     - python manage.py collectstatic --noinput --pythonpath lib
     - gcloud auth activate-service-account --key-file .gitlab-ci.keyfile.json
