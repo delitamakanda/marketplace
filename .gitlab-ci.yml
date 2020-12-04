@@ -7,7 +7,7 @@ image: python:3.9
     - curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
     - apt-get update && apt-get install google-cloud-sdk
   after_script:
-    - sed --in-place -e "s/\w*/g" marketplace/settings_production.py
+    - sed --in-place -e "s/" marketplace/settings_production.py
     - sed --in-place -e "s/SECRET_KEY\s*=\s*'.*'/SECRET_KEY = '$SECRET_KEY'/g" marketplace/settings_production.py
     - pip install -r requirements.txt -t lib/
     - python manage.py migrate
