@@ -1,0 +1,35 @@
+image: python:3.9
+
+.deploy_template: &global_deploy_def
+  stage: deploy
+  before_script:
+    - echo "deb http://packages.cloud.google.com/apt cloud-sdk-jessie main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
+    - curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    - sudo apt-get update && sudo apt-get install google-cloud-sdk
+  after_script:
+    - sed --in-place -e "s/SECRET_KEY\s*=\s*'.*'/SECRET_KEY = '$SECRET_KEY'/g" marketplace/settings_production.py
+    - pip install -r requirements.txt
+    - python manage.py migrate
+    - python manage.py collectstatic --noinput --pythonpath lib
+    - echo $DEPLOY_KEY_FILE_PRODUCTION > .gitlab-ci.keyfile.json
+    - gcloud auth activate-service-account --key-file .gitlab-ci.keyfile.json
+    - gcloud --quiet --project $PROJECT_ID app deploy
+
+
+deploy_production:
+  <<: *global_deploy_def
+  environment: Production
+  only:
+    - main
+  script:
+    - echo "export PROJECT_ID=$PROJECT_ID_PRODUCTION" >> .gitlab-ci.env
+    - echo "export SECRET_KEY='$SECRET_KEY'" >> .gitlab-ci.env
+    - echo "export DEBUG=$DEBUG" >> .gitlab-ci.env
+    - echo "export GOOGLE_APP_ENGINE_HOST='$GOOGLE_APP_ENGINE_HOST'" >> .gitlab-ci.env
+    - echo "export GOOGLE_APP_ENGINE_NAME=$GOOGLE_APP_ENGINE_NAME" >> .gitlab-ci.env
+    - echo "export GOOGLE_APP_ENGINE_PASSWORD='$GOOGLE_APP_ENGINE_PASSWORD'" >> .gitlab-ci.env
+    - echo "export GOOGLE_APP_ENGINE_PORT=$GOOGLE_APP_ENGINE_PORT" >> .gitlab-ci.env
+    - echo "export GOOGLE_APP_ENGINE_USER='$GOOGLE_APP_ENGINE_USER'" >> .gitlab-ci.env
+    - echo "export SOCIAL_AUTH_GOOGLE_OAUTH2_KEY=$SOCIAL_AUTH_GOOGLE_OAUTH2_KEY" >> .gitlab-ci.env
+    - echo "export SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET='$SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET'" >> .gitlab-ci.env
+    - echo $DEPLOY_KEY_FILE_PRODUCTION > .gitlab-ci.keyfile.json
