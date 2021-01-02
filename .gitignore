@@ -142,3 +142,7 @@ cert.crt
 cert.key
 .DS_Store
 media/
+
+# Blog
+blog/blog_out/
+blog/resources/
