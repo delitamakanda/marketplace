@@ -1,5 +1,5 @@
 # Marketplace
-![https://gitlab.com/dmakanda/marketplace](https://gitlab.com/dmakanda/marketplace/badges/main/pipeline.svg)
+![Django CI](https://github.com/delitamakanda/marketplace/workflows/Django%20CI/badge.svg?branch=main)
 ### How to init project
 
 ```bash
