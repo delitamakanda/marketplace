@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    "django.contrib.sites",
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
     'cart.apps.CartConfig',
@@ -165,3 +166,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Email
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# django.contrib.sites
+SITE_ID = 1
