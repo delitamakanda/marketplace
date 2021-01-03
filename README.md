@@ -35,6 +35,7 @@ python3 manage.py runserver
 3. https://themes.gohugo.io/theme/smol/
 4. https://themes.gohugo.io/almeida-cv/
 5. https://themes.gohugo.io/theme/simple-resume/
+6. https://livebook.manning.com/book/hugo-in-action/about-this-meap/v-5/
 
 
 ### Start Hugo
