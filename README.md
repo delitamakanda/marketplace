@@ -25,6 +25,7 @@ python3 manage.py runserver
 ### Misc
 1. https://www.mattlayman.com/blog/2020/hugo-blog-in-django-app/
 2. https://opensource.com/article/20/11/django-rest-framework-serializers
+3. https://www.mattlayman.com/blog/2020/tailwind-django-heroku/ + https://github.com/mblayman/homeschool
 
 
 ### Make Hugo Pretty

@@ -60,7 +60,8 @@ MIDDLEWARE = [
 ]
 
 MORE_WHITENOISE = [
-    { "directory": os.path.join(BASE_DIR, "blog/blog_out"), "prefix": "blog/" }
+    { "directory": os.path.join(BASE_DIR, "blog/blog_out"), "prefix": "blog/" },
+    { "directory": os.path.join(BASE_DIR, "docs", "_build", "html"), "prefix": "docs/" },
 ]
 
 WHITENOISE_INDEX_FILE = True
@@ -162,3 +163,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CART_SESSION_ID = 'cart'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+# Email
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

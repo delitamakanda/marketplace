@@ -144,5 +144,5 @@ cert.key
 media/
 
 # Blog
-blog/blog_out/
-blog/resources/
+blog_out/
+resources/
