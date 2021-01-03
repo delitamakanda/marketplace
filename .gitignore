@@ -146,3 +146,6 @@ media/
 # Blog
 blog_out/
 resources/
+
+# nodejs
+node_modules/

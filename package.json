@@ -1,0 +1,28 @@
+{
+  "name": "marketplace",
+  "version": "1.0.0",
+  "description": "![Django CI](https://github.com/delitamakanda/marketplace/workflows/Django%20CI/badge.svg?branch=main) ### How to init project",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss build frontend/site.css -c frontend/tailwind.config.js -o static/css/site.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delitamakanda/marketplace.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/delitamakanda/marketplace/issues"
+  },
+  "homepage": "https://github.com/delitamakanda/marketplace#readme",
+  "dependencies": {
+    "autoprefixer": "^10.1.0",
+    "tailwindcss": "^2.0.2"
+  },
+  "engines": {
+    "node": "15.x"
+  }
+}
