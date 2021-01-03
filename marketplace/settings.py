@@ -60,7 +60,7 @@ MIDDLEWARE = [
 ]
 
 MORE_WHITENOISE = [
-    { "directory": os.path.join(BASE_DIR, "blog/blog_out"), "prefix": "blog/" },
+    { "directory": os.path.join(BASE_DIR, "blog_out"), "prefix": "blog/" },
 ]
 
 WHITENOISE_INDEX_FILE = True
