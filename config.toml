@@ -9,3 +9,19 @@ staticDir = "blog/static"
 themesDir = "blog/themes"
 publishDir = "blog_out"
 theme = "tale"
+[Params]
+[Author]
+    name = "Staff"
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    title = "About"
+    url = "/about/"
+    weight = 0
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    title = "Posts"
+    url = "/posts/"
+    weight = 0
