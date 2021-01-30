@@ -16,7 +16,8 @@ cssselect2==0.4.1
 defusedxml==0.7.0rc1
 Django==3.1.3
 django-countries==6.1.3
-django-extensions==3.0.9
+django-extensions==3.0.
+flower==0.9.7
 html5lib==1.1
 idna==2.10
 kombu==5.0.2
