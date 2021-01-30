@@ -1,4 +1,4 @@
-baseURL = "https://marketplace-fr.herokuapp.com/blog/"
+baseURL = "/blog/"
 languageCode = "fr-fr"
 title = "Blog - Marketplace"
 archetypeDir = "blog/archetypes"
@@ -13,12 +13,6 @@ theme = "tale"
 [Author]
     name = "Staff"
 [menu]
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    title = "About"
-    url = "/about/"
-    weight = 0
   [[menu.main]]
     identifier = "posts"
     name = "Posts"
