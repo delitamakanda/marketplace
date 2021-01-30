@@ -1,4 +1,4 @@
-baseURL = "/blog/"
+baseURL = "https://marketplace-fr.herokuapp.com/blog/"
 languageCode = "fr-fr"
 title = "Blog - Marketplace"
 archetypeDir = "blog/archetypes"
