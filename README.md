@@ -14,6 +14,12 @@ python3 manage.py runserver_plus --cert-file cert.crt
 or 
 
 python3 manage.py runserver
+celery -A marketplace worker -l info
+```
+
+### Monitoring Flower
+```
+celery -A marketplace flower
 ```
 
 ### Resources
