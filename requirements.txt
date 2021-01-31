@@ -49,5 +49,5 @@ Werkzeug==1.0.
 whitenoise[brotli]==5.2.0
 
 dj-database-url==0.5.0
-gunicorn==19.9.0
-psycopg2-binary==2.8.2
+gunicorn==20.0.4
+psycopg2-binary==2.8.6
