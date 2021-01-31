@@ -169,3 +169,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # django.contrib.sites
 SITE_ID = 1
+
+# Task async
+CELERY_BROKER_URL = config('REDIS_URL', 'redis://localhost:6379/0', cast=str)
+CELERY_RESULT_BACKEND = config('REDIS_URL', 'redis://localhost:6379/0', cast=str)
