@@ -64,7 +64,7 @@ MORE_WHITENOISE = [
     { "directory": os.path.join(BASE_DIR, "blog_out"), "prefix": "blog/" },
 ]
 
-WHITENOISE_INDEX_FILE = True
+WHITENOISE_INDEX_FILE = False
 
 ROOT_URLCONF = 'marketplace.urls'
 
@@ -137,7 +137,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/")]
 
 LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
