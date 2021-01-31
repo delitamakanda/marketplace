@@ -3,6 +3,13 @@ title: "Getting Started"
 date: 2021-01-31T20:42:58+01:00
 draft: false
 Author: "Délita Makanda"
+
+summary: "" # Remove this if you want Hugo to just use the first 70 (configurable) characters of the post as the summary.
+description: ""
+
+keywords:
+tags:
+categories:
 ---
 
 Etiam et iaculis augue, a molestie leo. Mauris facilisis libero libero, et vestibulum tellus ullamcorper quis. Ut posuere nunc nec est convallis tristique. In nec dolor sit amet dui aliquet varius sed vitae urna. Curabitur id arcu auctor dolor vulputate rhoncus ultrices nec ligula. Quisque id lorem eget lectus tristique aliquet. Suspendisse potenti. Integer vitae fringilla augue, non euismod sapien. Duis eleifend lectus urna, vel consectetur massa ullamcorper sit amet. Pellentesque sed ex mauris. Duis congue risus vel est iaculis efficitur.

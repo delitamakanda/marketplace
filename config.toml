@@ -9,6 +9,5 @@ staticDir = "blog/static"
 themesDir = "blog/themes"
 publishDir = "blog_out"
 theme = "tale"
-[Params]
-[Author]
-    name = "Staff"
+[author]
+  name = "Marketplace" # Used by the foot copyright
