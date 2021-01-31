@@ -4,7 +4,7 @@
   "description": "![Django CI](https://github.com/delitamakanda/marketplace/workflows/Django%20CI/badge.svg?branch=main) ### How to init project",
   "main": "index.js",
   "scripts": {
-    "build": "tailwindcss build frontend/site.css -c frontend/tailwind.config.js -o static/css/site.css",
+    "build": "tailwindcss build frontend/site.css -c frontend/tailwind.config.js -o static/site.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

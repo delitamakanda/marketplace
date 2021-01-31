@@ -146,8 +146,7 @@ media/
 # Blog
 blog_out/
 resources/
-**/**/site.css
-!frontend/site.css
 
 # nodejs
 node_modules/
+static/site.css
