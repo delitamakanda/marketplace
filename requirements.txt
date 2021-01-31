@@ -1,6 +1,7 @@
 amqp==5.0.2
 asgiref==3.3.1
 autopep8==1.5.4
+bleach==3.2.3
 billiard==3.6.3.0
 cairocffi==1.2.0
 CairoSVG==2.5.0
