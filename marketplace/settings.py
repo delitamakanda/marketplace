@@ -64,7 +64,7 @@ MORE_WHITENOISE = [
     { "directory": os.path.join(BASE_DIR, "blog_out"), "prefix": "blog/" },
 ]
 
-WHITENOISE_INDEX_FILE = False
+WHITENOISE_INDEX_FILE = True
 
 ROOT_URLCONF = 'marketplace.urls'
 
