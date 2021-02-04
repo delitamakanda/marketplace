@@ -3,11 +3,7 @@ module.exports = {
     purgeLayersByDefault: true
   },
   purge: [
-    './account/templates/**/*.html',
-    './cart/templates/**/*.html',
-    './catalog/templates/**/*.html',
-    './orders/templates/**/*.html',
-    './payment/templates/**/*.html'
+    './templates/**/*.html'
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
