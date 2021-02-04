@@ -68,8 +68,6 @@ MORE_WHITENOISE = [
 
 WHITENOISE_INDEX_FILE = True
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 ROOT_URLCONF = 'marketplace.urls'
 
 TEMPLATES = [
