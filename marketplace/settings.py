@@ -44,9 +44,12 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'payment.apps.PaymentConfig',
+    'newsletter.apps.NewsletterConfig',
     'social_django',
     'django_extensions',
     'django_countries',
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +57,7 @@ MIDDLEWARE = [
     # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'catalog.middleware.MoreWhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -175,3 +179,12 @@ SITE_ID = 1
 # Task async
 CELERY_BROKER_URL = config('REDIS_URL', 'redis://localhost:6379/0', cast=str)
 CELERY_RESULT_BACKEND = config('REDIS_URL', 'redis://localhost:6379/0', cast=str)
+
+# Cors
+CORS_ORIGIN_WHITELIST = (
+    'https://marketplace-fr.herokuapp.com',
+)
+
+CORS_URLS_REGEX = r'^/api/.*$'
+
+
