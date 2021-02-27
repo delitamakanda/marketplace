@@ -21,6 +21,7 @@ def order_create(request):
             for item in cart:
                 product = get_object_or_404(
                     Product, id=item['product']['id'], name=item['product']['name'])
+                product.available = False
                 OrderItem.objects.create(
                     order=order, product=product, price=item['price'], quantity=item['quantity'])
             cart.clear()
