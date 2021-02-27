@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+import datetime
 from decouple import config
 from pathlib import Path
 
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'django_countries',
     'rest_framework',
     'corsheaders',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +69,7 @@ MIDDLEWARE = [
 ]
 
 MORE_WHITENOISE = [
-    { "directory": os.path.join(BASE_DIR, "blog_out"), "prefix": "blog/" },
+    {"directory": os.path.join(BASE_DIR, "blog_out"), "prefix": "blog/"},
 ]
 
 WHITENOISE_INDEX_FILE = True
@@ -156,12 +158,14 @@ AUTHENTICATION_BACKENDS = [
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_SAVE_EVERY_REQUEST = True
-SESSION_COOKIE_AGE = 1209600 # 2 weeks
+SESSION_COOKIE_AGE = 1209600  # 2 weeks
 SESSION_COOKIE_DOMAIN = None
 SESSION_COOKIE_SECURE = False
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY', 'dummy')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', 'dummy')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config(
+    'SOCIAL_AUTH_GOOGLE_OAUTH2_KEY', 'dummy')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config(
+    'SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', 'dummy')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -178,7 +182,8 @@ SITE_ID = 1
 
 # Task async
 CELERY_BROKER_URL = config('REDIS_URL', 'redis://localhost:6379/0', cast=str)
-CELERY_RESULT_BACKEND = config('REDIS_URL', 'redis://localhost:6379/0', cast=str)
+CELERY_RESULT_BACKEND = config(
+    'REDIS_URL', 'redis://localhost:6379/0', cast=str)
 
 # Cors
 CORS_ORIGIN_WHITELIST = (
@@ -187,4 +192,22 @@ CORS_ORIGIN_WHITELIST = (
 
 CORS_URLS_REGEX = r'^/api/.*$'
 
+# Rest framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'marketplace.pagination.CatalogPagination',
+    'SEARCH_PARAM': 'q',
+    'ORDERING_PARAM': 'ordering',
+}
 
+# JWT
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'marketplace.utils.jwt_response_payload_handler',
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=30000),
+    'JWT_ALLOW_REFRESH': True,
+}
