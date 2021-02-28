@@ -18,6 +18,20 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from rest_framework_jwt.views import (obtain_jwt_token,
+                                      verify_jwt_token,
+                                      refresh_jwt_token)
+
+from catalog.api.views import (
+    APIRoot,
+    CategoryListAPIView,
+    CategoryDetailAPIView,
+    ProductListAPIView,
+    ProductDetailAPIView,
+    ProductCreateAPIView,
+    ProductDetailUpdateAPIView,
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
@@ -26,6 +40,24 @@ urlpatterns = [
     path('payment/', include('payment.urls', namespace='payment')),
     path('', include('catalog.urls', namespace='catalog')),
     path('social-auth/', include('social_django.urls', namespace='social')),
+]
+
+urlpatterns += [
+    path('api/', APIRoot.as_view(), name='api_root'),
+
+    path('api/jwt/', obtain_jwt_token, name='jwt'),
+    path('api/refresh/', refresh_jwt_token, name='refresh'),
+
+    path('api/products/', ProductListAPIView.as_view(), name='products_api'),
+    path('api/products/<int:pk>/', ProductDetailAPIView.as_view(),
+         name='products_detail_api'),
+    path('api/products/new/', ProductCreateAPIView.as_view(), name='products_create_api'),
+    path('api/products/<int:pk>/update/', ProductDetailUpdateAPIView.as_view(),
+         name='products_detail_update_api'),
+
+    path('api/categories/', CategoryListAPIView.as_view(), name='category_api'),
+    path('api/categories/<int:pk>/', CategoryDetailAPIView.as_view(),
+         name='category_detail_api'),
 ]
 
 if settings.DEBUG:

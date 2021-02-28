@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'storages',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -194,6 +195,7 @@ CORS_URLS_REGEX = r'^/api/.*$'
 
 # Rest framework
 REST_FRAMEWORK = {
+    'DEFAULT_VERSIONING_CLASS':'rest_framework.versioning.NamespaceVersioning',
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
     ),
