@@ -189,6 +189,7 @@ CELERY_RESULT_BACKEND = config(
 # Cors
 CORS_ORIGIN_WHITELIST = (
     'https://marketplace-fr.herokuapp.com',
+    'http://localhost:8100',
 )
 
 CORS_URLS_REGEX = r'^/api/.*$'
