@@ -202,7 +202,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
-    'DEFAULT_PAGINATION_CLASS': 'marketplace.pagination.CatalogPagination',
+    'DEFAULT_PAGINATION_CLASS': 'catalog.api.pagination.CatalogPagination',
     'SEARCH_PARAM': 'q',
     'ORDERING_PARAM': 'ordering',
 }
