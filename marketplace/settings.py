@@ -190,7 +190,7 @@ CELERY_RESULT_BACKEND = config(
 CORS_ORIGIN_WHITELIST = (
     'https://marketplace-fr.herokuapp.com',
     'http://localhost:8100',
-    'https://marketplace-fr.netlify.app/',
+    'https://marketplace-fr.netlify.app',
 )
 
 CORS_URLS_REGEX = r'^/api/.*$'
